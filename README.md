@@ -257,3 +257,5 @@ const ExampleApp = () =>
 
 [build-size]: https://badge-size.herokuapp.com/mvilledieu/shadertoy-react/master/lib/shadertoy-react.min.js.svg?compression=gzip
 [build-size-url]: https://github.com/mvilledieu/shadertoy-react/master/lib/
+
+npm install --legacy-peer-deps

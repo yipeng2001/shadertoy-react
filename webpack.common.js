@@ -19,6 +19,11 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.glsl$/i,
+          use: 'webpack-glsl-loader'
+        // type: 'asset/source',  // This will handle GLSL files as raw text
+      },
+      {
         test: /\.(png|jpg|gif|mp4|avi|m4v)$/,
         use: [
           {
@@ -31,7 +36,7 @@ module.exports = {
   },
   plugins: [htmlWebpackPlugin],
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx", '.glsl']
   },
   devServer: {
     host: '0.0.0.0',

@@ -9,7 +9,7 @@ import clock from "./shaders/clock";
 import deviceorientation from "./shaders/deviceorientation.js";
 import classicSyntax from "./shaders/classicSyntax.js";
 import customUniforms from "./shaders/customUniforms.js"
-import FluidSimulation   from "./FluidSimulation"
+// import FluidSimulation   from "./FluidSimulation"
 const GlobalStyle = createGlobalStyle`
   body, html {
     width: 100%;
@@ -67,7 +67,7 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <FluidSimulation />
+        {/* <FluidSimulation /> */}
         <TestCallbackFading fadeIn={this.state.fadeIn}>
           <ShadertoyReact
             fs={fsImages}

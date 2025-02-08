@@ -1,13 +1,13 @@
 import React from "react";
 // import { Image, Buffer, ShaderToy } from "shadertoy-react";
 import ShadertoyReact from "../../src/index.jsx";
-import commonShaderCode from './shadersb/common.glsl'; // Direct import
-import bufferACode from './shadersb/bufferA.glsl';
-import bufferBCode from './shadersb/bufferB.glsl';
-import bufferCCode from './shadersb/bufferC.glsl';
-import imageShaderCode from './shadersb/image.glsl';
-
 const FluidSimulation = () => {
+  // 将 common.glsl 内容注入所有 Shader
+  const commonShaderCode = `
+    // 此处粘贴 common.glsl 的全部内容
+    ${require('!raw-loader!./shadersb/common.glsl')}
+  `;
+
   return (
     <ShaderToy>
       {/* 缓冲区A：粒子初始化与重新整合 */}
@@ -15,7 +15,7 @@ const FluidSimulation = () => {
         id="bufferA"
         code={`
           ${commonShaderCode}
-          ${bufferACode}
+          ${require('!raw-loader!./shadersb/bufferA.glsl')}
         `}
       />
 
@@ -24,7 +24,7 @@ const FluidSimulation = () => {
         id="bufferB"
         code={`
           ${commonShaderCode}
-          ${bufferBCode}
+          ${require('!raw-loader!./shadersb/bufferB.glsl')}
         `}
         iChannel0={{ buffer: "bufferA" }} // 读取 bufferA 的输出
       />
@@ -34,7 +34,7 @@ const FluidSimulation = () => {
         id="bufferC"
         code={`
           ${commonShaderCode}
-          ${bufferCCode}
+          ${require('!raw-loader!./shadersb/bufferC.glsl')}
         `}
         iChannel0={{ buffer: "bufferB" }} // 读取 bufferB 的输出
       />
@@ -43,7 +43,7 @@ const FluidSimulation = () => {
       <Image
         code={`
           ${commonShaderCode}
-          ${imageShaderCode}
+          ${require('!raw-loader!./shadersb/image.glsl')}
         `}
         iChannel0={{ buffer: "bufferC" }} // 读取 bufferC 的密度数据
         iChannel1={{ buffer: "bufferB" }} // 可选：需要额外通道时添加
